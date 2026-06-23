@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Happy Birthday ❤️</title>
 
 <style>
@@ -11,14 +10,37 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:Arial;
 }
 
 body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
     overflow:hidden;
 }
 
+/* START SCREEN */
+#startScreen{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+#startScreen button{
+    padding:18px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    color:#ff4d6d;
+    cursor:pointer;
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+
+/* SLIDE */
 .slide{
     width:100%;
     height:100vh;
@@ -26,6 +48,7 @@ body{
     justify-content:center;
     align-items:center;
     padding:20px;
+    text-align:center;
 }
 
 .slide.active{
@@ -34,12 +57,11 @@ body{
 
 .card{
     background:white;
-    width:90%;
     max-width:420px;
-    border-radius:25px;
+    width:90%;
     padding:20px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
 .card img{
@@ -52,14 +74,15 @@ body{
 
 h1{
     color:#ff4d6d;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 p{
-    line-height:1.7;
     color:#555;
+    line-height:1.6;
 }
 
+/* BUTTON NEXT */
 .btn{
     position:fixed;
     bottom:20px;
@@ -67,69 +90,74 @@ p{
     background:#ff4d6d;
     color:white;
     border:none;
-    padding:14px 25px;
+    padding:15px 25px;
     border-radius:50px;
-    font-size:16px;
     cursor:pointer;
+    z-index:999;
 }
 
-.cover{
-    font-size:70px;
-}
-
-.final{
-    font-size:90px;
+/* CONFETTI */
+.confetti{
+    position:fixed;
+    top:-20px;
+    font-size:22px;
+    z-index:999;
 }
 </style>
-
 </head>
+
 <body>
 
-<!-- SLIDE 1 -->
+<!-- START SCREEN -->
+<div id="startScreen">
+    <button onclick="startBirthday()">🎂 Buka Ucapan ❤️</button>
+</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="music/lagu.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SLIDE 1 UCAPAN -->
 <div class="slide active">
     <div class="card">
-        <div class="cover">🎂</div>
-        <h1>Happy Birthday</h1>
+        <h1>🎉 Happy Birthday</h1>
         <p>
-            Selamat ulang tahun untuk orang yang sangat spesial.
-            Hari ini adalah hari terbaik untuk merayakan dirimu.
+            Hari ini adalah hari spesialmu.<br>
+            Semoga semua kebahagiaan selalu menyertaimu ❤️
         </p>
     </div>
 </div>
 
-<!-- SLIDE 2 -->
+<!-- SLIDE 2 UCAPAN -->
 <div class="slide">
     <div class="card">
         <h1>💌 Untukmu</h1>
         <p>
-            Terima kasih karena sudah menjadi pribadi yang baik,
-            kuat, dan selalu membawa kebahagiaan bagi orang-orang
-            di sekitarmu.
+            Terima kasih sudah menjadi pribadi yang baik<br>
+            dan selalu memberi warna dalam hidup orang lain.
         </p>
     </div>
 </div>
 
-<!-- SLIDE 3 -->
+<!-- SLIDE 3 UCAPAN -->
 <div class="slide">
     <div class="card">
-        <h1>✨ Harapanku</h1>
+        <h1>✨ Harapan</h1>
         <p>
-            Semoga di usia yang baru ini,
-            semua impianmu tercapai,
-            kesehatan selalu menyertaimu,
-            dan setiap langkahmu dipenuhi keberkahan.
+            Semoga semua impianmu tercapai satu per satu<br>
+            dan hidupmu selalu dipenuhi kebahagiaan.
         </p>
     </div>
 </div>
 
-<!-- SLIDE 4 -->
+<!-- SLIDE 4 UCAPAN -->
 <div class="slide">
     <div class="card">
-        <h1>❤️ Terima Kasih</h1>
+        <h1>❤️ Doa</h1>
         <p>
-            Terima kasih atas semua tawa,
-            cerita, kenangan, dan waktu yang sudah kita lewati.
-            Semoga kebahagiaan selalu menemanimu.
+            Sehat selalu, panjang umur,<br>
+            dan selalu dikelilingi orang-orang yang menyayangimu.
         </p>
     </div>
 </div>
@@ -139,7 +167,7 @@ p{
     <div class="card">
         <img src="images/foto1.jpg">
         <h1>📸 Kenangan 1</h1>
-        <p>Momen yang tidak akan terlupakan.</p>
+        <p>Momen pertama yang tidak terlupakan.</p>
     </div>
 </div>
 
@@ -148,7 +176,7 @@ p{
     <div class="card">
         <img src="images/foto2.jpg">
         <h1>📸 Kenangan 2</h1>
-        <p>Salah satu hari terbaik yang pernah ada.</p>
+        <p>Hari yang penuh cerita indah.</p>
     </div>
 </div>
 
@@ -157,7 +185,7 @@ p{
     <div class="card">
         <img src="images/foto3.jpg">
         <h1>📸 Kenangan 3</h1>
-        <p>Semoga akan ada lebih banyak cerita indah lagi.</p>
+        <p>Senyummu selalu bikin hangat.</p>
     </div>
 </div>
 
@@ -166,7 +194,7 @@ p{
     <div class="card">
         <img src="images/foto4.jpg">
         <h1>📸 Kenangan 4</h1>
-        <p>Senyum yang selalu membawa kebahagiaan.</p>
+        <p>Kenangan yang ingin selalu diulang.</p>
     </div>
 </div>
 
@@ -175,46 +203,68 @@ p{
     <div class="card">
         <img src="images/foto5.jpg">
         <h1>📸 Kenangan 5</h1>
-        <p>Kenangan yang akan selalu tersimpan.</p>
+        <p>Dan semoga masih banyak cerita lagi.</p>
     </div>
 </div>
 
 <!-- PENUTUP -->
 <div class="slide">
     <div class="card">
-        <div class="final">🎉</div>
-        <h1>Selamat Ulang Tahun ❤️</h1>
+        <h1>🎂 Happy Birthday ❤️</h1>
         <p>
-            Semoga semua doa baik mengiringi setiap langkahmu.
-            Tetaplah menjadi pribadi yang luar biasa.
-            Nikmati hari spesialmu!
+            Terima kasih sudah membuka semua kenangan ini.<br>
+            Semoga hari-harimu selalu bahagia.
         </p>
     </div>
 </div>
 
+<!-- BUTTON -->
 <button class="btn" onclick="nextSlide()">Next ➜</button>
 
 <script>
 let current = 0;
 const slides = document.querySelectorAll(".slide");
 
-function showSlide(index){
-    slides.forEach(slide=>{
-        slide.classList.remove("active");
-    });
-
-    slides[index].classList.add("active");
+function showSlide(i){
+    slides.forEach(s=>s.classList.remove("active"));
+    slides[i].classList.add("active");
 }
 
 function nextSlide(){
     current++;
-
     if(current >= slides.length){
         current = 0;
     }
-
     showSlide(current);
 }
+
+function startBirthday(){
+    document.getElementById("startScreen").style.display="none";
+    document.getElementById("bgMusic").play();
+}
+
+/* CONFETTI */
+function createConfetti(){
+    const c = document.createElement("div");
+    c.classList.add("confetti");
+    c.innerHTML = "🎉";
+    c.style.left = Math.random()*100 + "vw";
+    document.body.appendChild(c);
+
+    let pos = -20;
+
+    let fall = setInterval(()=>{
+        pos += 5;
+        c.style.top = pos + "px";
+
+        if(pos > window.innerHeight){
+            clearInterval(fall);
+            c.remove();
+        }
+    },20);
+}
+
+setInterval(createConfetti,400);
 </script>
 
 </body>
